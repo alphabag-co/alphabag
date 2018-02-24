@@ -9,7 +9,9 @@ import { HomePage } from '../pages/home/home';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -26,8 +28,11 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(firebaseConfig, 'alphabag'),
+    AngularFirestoreModule.enablePersistence(),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],

@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Alphabag
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <p>Money in the bank 💸</p>
+
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item | json}}
+    </li>
+  </ul>
 </ion-content>
