@@ -23,7 +23,7 @@ export class HomePage {
     this.items = afCollection.valueChanges();
     console.log(afCollection);
     const customer: Customer = {};
-    customer.name = 'ziopaperiono';
+    customer.name = 'ziopaperiono-test';
     const customers: Customer[] = [];
     customers.push(customer);
     afCollection.add(customer).then(customerRef => {
