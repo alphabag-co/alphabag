@@ -1,18 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Alphabag PWA
+      Alphabag UPDATE
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <p>Money in the bank 💸</p>
-  <p>Ciao amore mio</p>
 
-  <ul>
+  <!--<ul>
     <li class="text" *ngFor="let item of items | async">
       {{item | json}}
+    </li>
+  </ul>-->
+
+  <ul>
+    <li class="text" *ngFor="let position of positions">
+      {{position.coords | json}}
     </li>
   </ul>
 </ion-content>

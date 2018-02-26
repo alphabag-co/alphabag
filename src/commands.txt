@@ -2,3 +2,5 @@ ionic cordova run browser
 ionic serve
 ionic cordova build android
 ionic cordova build browser --prod --aot
+firebase deploy --only hosting
+git push ionic master

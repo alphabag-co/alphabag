@@ -9,6 +9,12 @@ import {
 } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import {
+  Geolocation,
+  Geoposition,
+  GeolocationOptions,
+  PositionError
+} from '@ionic-native/geolocation';
 
 @Component({
   selector: 'page-home',
@@ -16,7 +22,38 @@ import { of } from 'rxjs/observable/of';
 })
 export class HomePage {
   items: Observable<Customer[]>;
-  constructor(public navCtrl: NavController, private afs: AngularFirestore) {
+  positions: Geoposition[] = [];
+  constructor(
+    public navCtrl: NavController,
+    private afs: AngularFirestore,
+    private geolocation: Geolocation
+  ) {
+    const options: GeolocationOptions = {
+      maximumAge: 3000,
+      timeout: 5000,
+      enableHighAccuracy: true
+    };
+    /*this.geolocation
+      .getCurrentPosition()
+      .then((resp: Geoposition) => {
+        // resp.coords.latitude
+        // resp.coords.longitude
+        console.log(resp);
+      })
+      .catch((error: PositionError) => {
+        console.log('Error getting location', error);
+      });*/
+
+    const subscription = this.geolocation
+      .watchPosition(options)
+      .filter(p => {
+        console.log(p);
+        return p.coords !== undefined;
+      }) //Filter Out Errors
+      .subscribe(position => {
+        this.positions.push(position);
+      });
+
     const afCollection: AngularFirestoreCollection<
       Customer
     > = this.afs.collection<Customer>('customers');
@@ -25,7 +62,7 @@ export class HomePage {
     const customer: Customer = {};
     customer.name = 'ziopaperiono-test';
     const customers: Customer[] = [];
-    customers.push(customer);
+    // customers.push(customer);
     afCollection.add(customer).then(customerRef => {
       console.log(customerRef.id);
     });

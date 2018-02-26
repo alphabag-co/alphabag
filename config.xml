@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="co.alphabag" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Alphabag</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <description>Take a weight off</description>
     <author email="alphabag.co@gmail.com" href="http://ionicframework.com/">Alphabag Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -14,10 +14,10 @@
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashScreen" value="/src/assets/imgs/logo.png" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
-    <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
         <allow-intent href="market:*" />
@@ -89,6 +89,10 @@
         <variable name="WARN_DEBUG" value="true" />
         <variable name="UPDATE_API" value="https://api.ionicjs.com" />
         <variable name="MAX_STORE" value="2" />
+    </plugin>
+    <allow-navigation href="http://192.168.1.6:8100" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Alphabag needs to locate your bags" />
     </plugin>
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="7.0.0" />
