@@ -4,3 +4,4 @@ ionic cordova build android
 ionic cordova build browser --prod --aot
 firebase deploy --only hosting
 git push ionic master
+git push origin master
