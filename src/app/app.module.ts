@@ -1,3 +1,5 @@
+import { HomePage } from './../pages/home/home';
+import { MapComponent } from './../components/map/map';
 import { Geolocation } from '@ionic-native/geolocation';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -6,13 +8,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
+import { ComponentsModule } from '../components/components.module';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -33,7 +36,8 @@ export const firebaseConfig = {
     AngularFirestoreModule.enablePersistence(),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
@@ -41,7 +45,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    Geolocation
+    Geolocation,
+    ConnectivityServiceProvider
   ]
 })
 export class AppModule {}
